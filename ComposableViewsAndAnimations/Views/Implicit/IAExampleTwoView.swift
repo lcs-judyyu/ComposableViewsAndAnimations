@@ -54,7 +54,7 @@ struct IAExampleTwoView: View {
                     // change is animated or not.
                     // When useAnimation is true, the linear animation effect with a duration of 2.5 seconds will be used.
                     // When useAnimation is false, there will be no animation.
-//                    .animation(useAnimation ? .linear(duration: 2.5) : .none)
+                    .animation(useAnimation ? .linear(duration: 2.5) : .none)
                 
                 Spacer()
                 
