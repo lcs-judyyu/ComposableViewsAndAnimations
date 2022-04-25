@@ -42,13 +42,13 @@ struct ExerciseThreeView: View {
             
             VStack {
 
-                    Text(typeFace)
+                    Text("Good work!")
                         .padding()
                         .font(.custom(typeFace, size: 30.0))
                         .overlay(
                             Rectangle()
                                 .strokeBorder(style: StrokeStyle(lineWidth: 4, dash: [10], dashPhase: phase))
-                                .frame(width: 300, height: 70)
+                                //.frame(width: 300, height: 70)
                                 .onAppear { self.phase -= 20 }
                                 .animation(Animation.linear.repeatForever(autoreverses: false))
                         )
@@ -58,11 +58,11 @@ struct ExerciseThreeView: View {
                         .onTapGesture {
                             withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
                                 rotationAmount += 30.0
-                                typeFace = ExerciseThreeView.fontNames.randomElement()!
                             }
+                            //typeFace = ExerciseThreeView.fontNames.randomElement()!
                         }
-                        .shadow(color: .red, radius: 3, x: 30, y: 30)
-
+                        .shadow(color: .red, radius: 3, x: 20, y: 20)
+                
             }
             .navigationTitle("Exercise 3")
             .toolbar {
