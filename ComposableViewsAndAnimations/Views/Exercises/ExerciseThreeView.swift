@@ -14,21 +14,20 @@ struct ExerciseThreeView: View {
     
     // Controls whether this view is showing or not
     @Binding var showThisView: Bool
-        
+    
     // Controls what typeface the text is shown in
     @State private var typeFace: String = "Helvetica-Neue"
-
+    
     // Whether to apply the animation
     @State private var useAnimation = false
     
     // How much to rotate the text
     @State private var rotationAmount = 0.0
-
+    
+    @State private var phase: CGFloat = 0
+    
     // MARK: Computed properties
 
-    // List all fonts available
-    // NOTE: This is a very useful gist...
-    //       https://gist.github.com/kristopherjohnson/c825cb97b1ad1fe0bc13d709986d0763
     private static let fontNames: [String] = {
         var names: [String] = []
         for familyName in UIFont.familyNames {
@@ -36,36 +35,34 @@ struct ExerciseThreeView: View {
         }
         return names.sorted()
     }()
-
+    
     var body: some View {
         
         NavigationView {
             
             VStack {
-                
-                // NOTE: Here are some neat examples to consider...
-                //       https://medium.com/better-programming/create-an-awesome-loading-state-using-swiftui-9815ff6abb80
-                //
-                // NOTE: You might be wondering, in what ways can a view be manipulated?
-                //       In other words, what state changes might be fun to animate?
-                //       To see options, scroll down to the "Transforming views" section of the web page given here...
-                //
-                // https://www.hackingwithswift.com/quick-start/swiftui
-                Text(typeFace)
-                    .font(.custom(typeFace, size: 30.0))
-                    .rotation3DEffect(.degrees(rotationAmount), axis: (x: 0,
-                                                                       y: 1,
-                                                                       z: 0))
-                    .onTapGesture {
-                        withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
-                            rotationAmount += 360.0
+
+                    Text(typeFace)
+                        .padding()
+                        .font(.custom(typeFace, size: 30.0))
+                        .overlay(
+                            Rectangle()
+                                .strokeBorder(style: StrokeStyle(lineWidth: 4, dash: [10], dashPhase: phase))
+                                .frame(width: 300, height: 70)
+                                .onAppear { self.phase -= 20 }
+                                .animation(Animation.linear.repeatForever(autoreverses: false))
+                        )
+                        .rotation3DEffect(.degrees(rotationAmount), axis: (x: 0,
+                                                                           y: 1,
+                                                                           z: 0))
+                        .onTapGesture {
+                            withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
+                                rotationAmount += 30.0
+                                //typeFace = EAExampleOneView.fontNames.randomElement()!
+                            }
                         }
-                    }
-                
-                Capsule()
-                    .frame(width: 200, height: 100)
-                    .foregroundColor(.red)
-                
+                        .shadow(color: .red, radius: 3, x: 30, y: 30)
+
             }
             .navigationTitle("Exercise 3")
             .toolbar {
@@ -75,9 +72,7 @@ struct ExerciseThreeView: View {
                     }
                 }
             }
-
         }
-        
     }
     
     // MARK: Functions
