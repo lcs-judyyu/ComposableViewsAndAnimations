@@ -58,7 +58,7 @@ struct ExerciseThreeView: View {
                         .onTapGesture {
                             withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
                                 rotationAmount += 30.0
-                                //typeFace = EAExampleOneView.fontNames.randomElement()!
+                                typeFace = ExerciseThreeView.fontNames.randomElement()!
                             }
                         }
                         .shadow(color: .red, radius: 3, x: 30, y: 30)
