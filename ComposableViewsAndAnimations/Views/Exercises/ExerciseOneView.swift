@@ -51,14 +51,19 @@ struct ExerciseOneView: View {
                         expandOrShrink += 0.1
                         
                         if expandOrShrink <= 1 {
+                            
                             //expand and move up
                             scaleFactor += 0.1
                             offset += 20
+                            
                         } else if expandOrShrink <= 2 {
+                            
                             //shrink and move down
                             scaleFactor -= 0.1
                             offset -= 20
-                        } else if expandOrShrink > 2{
+                            
+                        } else {
+                            
                             expandOrShrink = 0
                             scaleFactor -= 0.1
                             offset -= 20
