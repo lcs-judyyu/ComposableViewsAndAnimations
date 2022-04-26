@@ -57,7 +57,7 @@ struct ExerciseThreeView: View {
                                                                            z: 0))
                         .onTapGesture {
                             withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
-                                rotationAmount += 30.0
+                                rotationAmount += 120.0
                             }
                             //typeFace = ExerciseThreeView.fontNames.randomElement()!
                         }

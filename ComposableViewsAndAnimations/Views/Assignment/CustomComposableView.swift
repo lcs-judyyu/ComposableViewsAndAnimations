@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct CustomComposableView: View {
+    
+    //MARK: Stored Properties
+    let timer = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
+    
+    //MARK: Computed Properties
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Circle()
+        }
+        .animation(
+            Animation.easeInOut(duration: 2)
+                .repeatForever(autoreverses: true)
+        )
+        .onReceive(timer) { input in
+            timer.upstream.connect().cancel()
+        }
     }
 }
 
