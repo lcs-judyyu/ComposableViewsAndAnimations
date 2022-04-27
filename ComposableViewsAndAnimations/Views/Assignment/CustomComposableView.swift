@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomComposableView: View {
     
     //MARK: Stored Properties
-    let timer = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.2, on: .main, in: .common).autoconnect()
     
     //controls position
     @State var topAndRightOffset: CGFloat = 100
@@ -83,7 +83,7 @@ struct CustomComposableView: View {
                 Text("Loading .")
                     .italic()
                     .bold()
-                    .opacity(1)
+                    .opacity(0)
                 
                 Text("Loading . .")
                     .italic()
@@ -93,7 +93,7 @@ struct CustomComposableView: View {
                 Text("Loading . . .")
                     .italic()
                     .bold()
-                    .opacity(0)
+                    .opacity(1)
                 
             }
             .font(.title2)
