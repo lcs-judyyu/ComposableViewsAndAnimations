@@ -12,6 +12,9 @@ struct CustomComposableView: View {
     //MARK: Stored Properties
     let timer = Timer.publish(every: 0.2, on: .main, in: .common).autoconnect()
     
+    // What is loading?
+    let message: String
+    
     //controls position
     @State var topAndRightOffset: CGFloat = 100
     @State var bottomAndLeftOffset: CGFloat = -100
@@ -79,7 +82,7 @@ struct CustomComposableView: View {
             
             //text
             HStack (spacing: 6) {
-                Text("Loading " + "Images")
+                Text("Loading " + "\(message)")
                     .italic()
                     .bold()
                     .opacity(1)
@@ -122,6 +125,6 @@ struct CustomComposableView: View {
 
 struct CustomComposableView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomComposableView()
+        CustomComposableView(message: "images")
     }
 }

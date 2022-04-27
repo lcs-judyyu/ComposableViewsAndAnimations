@@ -25,20 +25,20 @@ struct CustomComposableDescriptionView: View {
                     .padding(.top)
                 
                 Text("""
-                    Replace this with a description of how to use this view.
-
-                    If the view accepts a parameter, provide a control to enter the input below.
+                    This is a loading view that animations rotations, movements, and changes in size of four circles.
+                    
+                    Enter a phrase in the text field below.
                     """)
                 
-                TextField("Enter an input value", text: $phrase)
+                TextField("What is loading?", text: $phrase)
                 
             }
             .padding(.bottom)
             
             List {
-                NavigationLink(destination: CustomComposableView()) {
-                    SimpleListItemView(title: "My Composable View",
-                                       caption: "A brief description of my view")
+                NavigationLink(destination: CustomComposableView(message: phrase)) {
+                    SimpleListItemView(title: "Loading...",
+                                       caption: "What is loading? \(phrase)")
                 }
             }
             
