@@ -26,7 +26,7 @@ struct CustomComposableView: View {
     
     var body: some View {
         
-        VStack (spacing: 140) {
+        VStack (spacing: 130) {
             
             ZStack {
                 
@@ -73,16 +73,28 @@ struct CustomComposableView: View {
                     topAndRightOffset = 40
                     bottomAndLeftOffset = -40
                     scaleFactor = 0.6
-                    rotationDegree += 40
+                    rotationDegree += 30
                 }
                 //timer.upstream.connect().cancel()
             }
             
             //text
-            Group {
-                Text("Loading .").italic().bold()
-                + Text(" .").italic().bold()
-                + Text(" .").italic().bold()
+            ZStack {
+                Text("Loading .")
+                    .italic()
+                    .bold()
+                    .opacity(1)
+                
+                Text("Loading . .")
+                    .italic()
+                    .bold()
+                    .opacity(0)
+                
+                Text("Loading . . .")
+                    .italic()
+                    .bold()
+                    .opacity(0)
+                
             }
             .font(.title2)
             .foregroundColor(Color.gray)
