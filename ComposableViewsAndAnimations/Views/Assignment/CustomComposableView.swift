@@ -72,9 +72,14 @@ struct CustomComposableView: View {
                     Animation.easeInOut(duration: 0.4)
                         .repeatForever(autoreverses: true)
                 ) {
+                    //change position
                     topAndRightOffset = 40
                     bottomAndLeftOffset = -40
+                    
+                    //change size
                     scaleFactor = 0.6
+                    
+                    //rotate
                     rotationDegree += 30
                 }
                 
@@ -109,8 +114,8 @@ struct CustomComposableView: View {
                 
                 withAnimation(
                     Animation.linear(duration: 0.6)
-                        .repeatForever(autoreverses: false)
                 ) {
+                    
                     if textVersion == 3 {
                         textVersion = 1
                     } else {
