@@ -37,7 +37,7 @@ struct CustomComposableDescriptionView: View {
             
             List {
                 NavigationLink(destination: CustomComposableView(message: phrase)) {
-                    SimpleListItemView(title: "Loading...",
+                    SimpleListItemView(title: "Loading . . .",
                                        caption: "What is loading? \(phrase)")
                 }
             }

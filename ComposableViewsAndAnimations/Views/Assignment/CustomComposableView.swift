@@ -113,7 +113,7 @@ struct CustomComposableView: View {
             .onReceive(timer) { input in
                 
                 withAnimation(
-                    Animation.linear(duration: 0.6)
+                    Animation.linear(duration: 0.4)
                 ) {
                     
                     if textVersion == 3 {
