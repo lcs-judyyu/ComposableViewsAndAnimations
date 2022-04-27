@@ -25,7 +25,7 @@ struct CustomComposableDescriptionView: View {
                     .padding(.top)
                 
                 Text("""
-                    This is a loading view that animations rotations, movements, and changes in the sizes of four circles.
+                    This is a loading view that animates rotations, movements, and changes in the sizes of four circles.
                     
                     Enter a phrase in the text field below.
                     """)

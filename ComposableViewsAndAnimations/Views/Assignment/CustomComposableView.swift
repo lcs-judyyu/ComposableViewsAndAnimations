@@ -32,13 +32,13 @@ struct CustomComposableView: View {
     
     var body: some View {
         
-        VStack (spacing: 130) {
+        VStack (spacing: 120) {
             
             ZStack {
                 
                 //top
                 Circle()
-                    .fill(Color("aquamarine"))
+                    .fill(Color("coral"))
                     .frame(width: 70, height: 70)
                     .scaleEffect(scaleFactor)
                     .offset(x: 0, y: topAndRightOffset)
@@ -86,34 +86,26 @@ struct CustomComposableView: View {
             }
             
             //text
-            HStack (spacing: 6) {
+            HStack (spacing: 4) {
+                
                 Text("Loading " + "\(message)")
-                    .italic()
-                    .bold()
-                    .opacity(1)
                 
                 Text(" .")
-                    .italic()
-                    .bold()
                     .opacity(textVersion == 1 ? 1 : 0)
                 
                 Text(" .")
-                    .italic()
-                    .bold()
                     .opacity(textVersion == 2 ? 1 : 0)
                 
                 Text(" .")
-                    .italic()
-                    .bold()
                     .opacity(textVersion == 3 ? 1 : 0)
                 
             }
-            .font(.title2)
+            .font(Font.custom("TimesNewRomanPS-BoldItalicMT", size: 22))
             .foregroundColor(Color.gray)
             .onReceive(timer) { input in
                 
                 withAnimation(
-                    Animation.linear(duration: 0.4)
+                    Animation.easeInOut(duration: 0.4)
                 ) {
                     
                     if textVersion == 3 {
@@ -121,8 +113,8 @@ struct CustomComposableView: View {
                     } else {
                         textVersion += 1
                     }
+                    
                 }
-
             }
         }
     }
@@ -130,6 +122,6 @@ struct CustomComposableView: View {
 
 struct CustomComposableView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomComposableView(message: "images")
+        CustomComposableView(message: "Images")
     }
 }
