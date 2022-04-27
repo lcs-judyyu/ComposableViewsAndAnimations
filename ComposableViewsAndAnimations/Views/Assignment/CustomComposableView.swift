@@ -22,6 +22,9 @@ struct CustomComposableView: View {
     //controls rotation degree
     @State var rotationDegree: CGFloat = 0
     
+    //controls text
+    @State var textVersion: CGFloat = 1
+    
     //MARK: Computed Properties
     
     var body: some View {
@@ -32,35 +35,31 @@ struct CustomComposableView: View {
                 
                 //top
                 Circle()
-                    .fill(Color.blue)
+                    .fill(Color("aquamarine"))
                     .frame(width: 70, height: 70)
                     .scaleEffect(scaleFactor)
                     .offset(x: 0, y: topAndRightOffset)
-                    .opacity(0.7)
 
                 //right
                 Circle()
-                    .fill(Color.blue)
+                    .fill(Color("salmon"))
                     .frame(width: 70, height: 70)
                     .scaleEffect(scaleFactor)
                     .offset(x: topAndRightOffset, y: 0)
-                    .opacity(0.7)
 
                 //bottom
                 Circle()
-                    .fill(Color.blue)
+                    .fill(Color("champagne"))
                     .frame(width: 70, height: 70)
                     .scaleEffect(scaleFactor)
                     .offset(x: 0, y: bottomAndLeftOffset)
-                    .opacity(0.7)
    
                 //left
                 Circle()
-                    .fill(Color.blue)
+                    .fill(Color("cherokee"))
                     .frame(width: 70, height: 70)
                     .scaleEffect(scaleFactor)
                     .offset(x: bottomAndLeftOffset, y: 0)
-                    .opacity(0.7)
  
             }
             .rotationEffect(.degrees(rotationDegree))
@@ -75,29 +74,48 @@ struct CustomComposableView: View {
                     scaleFactor = 0.6
                     rotationDegree += 30
                 }
-                //timer.upstream.connect().cancel()
+                
             }
             
             //text
-            ZStack {
-                Text("Loading .")
-                    .italic()
-                    .bold()
-                    .opacity(0)
-                
-                Text("Loading . .")
-                    .italic()
-                    .bold()
-                    .opacity(0)
-                
-                Text("Loading . . .")
+            HStack (spacing: 6) {
+                Text("Loading " + "Images")
                     .italic()
                     .bold()
                     .opacity(1)
                 
+                Text(" .")
+                    .italic()
+                    .bold()
+                    .opacity(textVersion == 1 ? 1 : 0)
+                
+                Text(" .")
+                    .italic()
+                    .bold()
+                    .opacity(textVersion == 2 ? 1 : 0)
+                
+                Text(" .")
+                    .italic()
+                    .bold()
+                    .opacity(textVersion == 3 ? 1 : 0)
+                
             }
             .font(.title2)
             .foregroundColor(Color.gray)
+            .onReceive(timer) { input in
+                
+                withAnimation(
+                    Animation.linear(duration: 0.6)
+                        .repeatForever(autoreverses: false)
+                ) {
+                    if textVersion == 3 {
+                        textVersion = 1
+                    } else {
+                        textVersion += 1
+                    }
+                }
+
+            }
         }
     }
 }
