@@ -91,13 +91,13 @@ struct CustomComposableView: View {
                 Text("Loading " + "\(message)")
                 
                 Text(" .")
-                    .opacity(textVersion == 1 ? 1 : 0)
+                    .opacity(textVersion == 1 ? 1 : 0.2)
                 
                 Text(" .")
-                    .opacity(textVersion == 2 ? 1 : 0)
+                    .opacity(textVersion == 2 ? 1 : 0.2)
                 
                 Text(" .")
-                    .opacity(textVersion == 3 ? 1 : 0)
+                    .opacity(textVersion == 3 ? 1 : 0.2)
                 
             }
             .font(Font.custom("TimesNewRomanPS-BoldItalicMT", size: 22))
