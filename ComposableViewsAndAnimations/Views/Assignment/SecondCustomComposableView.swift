@@ -14,7 +14,7 @@ struct Intervals: Hashable, Identifiable {
 struct SecondCustomComposableView: View {
     
     //MARK: Stored Properties
-    let timer = Timer.publish(every: 1.2, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1.5, on: .main, in: .common).autoconnect()
     
     // What is the color?
     let color: String
@@ -52,46 +52,63 @@ struct SecondCustomComposableView: View {
     var body: some View {
         VStack (spacing: 50) {
             
-            ZStack {
-                //outer background
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .frame(width: 310, height: outerHeight)
-                
-                //from left to right
-                    RoundedRectangle(cornerRadius: 30, style: .continuous)
-                        .frame(width: 70, height: outerHeight)
-                        .foregroundColor(Color("aquamarine"))
-                        .offset(x: 120)
-                    
-                ForEach([0.0,1.0,3.0,4.0,6.0,7.0,9.0,10.0,12.0], id: \.self) {
-
-                    RoundedRectangle(cornerRadius: 30, style: .continuous)
-                        .frame(width: 70, height: outerHeight)
-                        .foregroundColor($0.truncatingRemainder(dividingBy: 3) == 0 ? Color.white : Color("aquamarine"))
-                        .offset(x: 120 + firstInterval + $0 * interval)
-                }
-                
-                //end
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .frame(width: 47, height: outerHeight)
-                    .foregroundColor(Color("aquamarine"))
-                    .offset(x: -133)
-                
-            }
-            
             HStack {
                 Image(systemName: "bubble.left").scaleEffect(2.5)
                 Image(systemName: "drop").scaleEffect(2.5).rotationEffect(.degrees(180))
                 Text("50%")
             }
             
-            switch progress {
-            case 100:
+            //progress bar
+            ZStack {
+                
+                HStack {
+                    //hide the progress bar
+                    Rectangle()
+                        .fill(Color.white)
+                        .frame(width: 50, height: outerHeight)
+                    
+                    Spacer()
+                }
+                
+                //outer background
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .frame(width: 310, height: outerHeight)
+                
+                ZStack {
+                    //from right to left
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color("aquamarine"))
+                        .offset(x: 120)
+                    
+                    ForEach([0.0,1.0,3.0,4.0,6.0,7.0,9.0,10.0,12.0], id: \.self) {
+                        
+                        RoundedRectangle(cornerRadius: 30, style: .continuous)
+                            .frame(width: 70, height: outerHeight)
+                            .foregroundColor($0.truncatingRemainder(dividingBy: 3) == 0 ? Color.white : Color("aquamarine"))
+                            .offset(x: 120 + firstInterval + $0 * interval)
+                    }
+                    
+                    //end
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 47, height: outerHeight)
+                        .foregroundColor(Color("aquamarine"))
+                        .offset(x: -133)
+                }
+                .offset(x: -310)
+                .opacity(1)
+                
+            }
+            
+            ZStack {
                 Text("Completed!")
-            case 60...99:
+                    .opacity(progress == 100 ? 1 : 0)
+          
                 Text("Almost Ready...")
-            default:
+                    .opacity(progress >= 60 ? 1 : 0)
+           
                 Text("Loading...")
+                    .opacity(progress < 60 ? 1 : 0)
             }
             
         }
