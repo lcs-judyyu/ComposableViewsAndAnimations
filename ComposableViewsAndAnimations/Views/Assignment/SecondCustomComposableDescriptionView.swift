@@ -29,7 +29,18 @@ struct SecondCustomComposableDescriptionView: View {
                         If the view accepts a parameter, provide a control to enter the input below.
                         """)
                 
-                TextField("Enter an input value", text: $phrase)
+                //let user pick a color
+                Picker(selection: .constant(""),
+                       label: Text("Color Picker"),
+                       content: {
+                    
+                    Text("Value 1").tag(0)
+                    Text("Value 2").tag(1)
+                    Text("Value 3").tag(2)
+                    Text("Value 4").tag(3)
+                    
+                })
+                .pickerStyle(MenuPickerStyle())
                 
             }
             .padding(.bottom)

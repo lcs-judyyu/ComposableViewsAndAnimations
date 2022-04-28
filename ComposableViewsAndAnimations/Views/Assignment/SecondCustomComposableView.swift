@@ -9,7 +9,14 @@ import SwiftUI
 
 struct SecondCustomComposableView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack (spacing: 50) {
+            
+            RoundedRectangle(cornerRadius: 50, style: .continuous)
+                .frame(width: 340, height: 30)
+            
+            Text("Loading")
+                
+        }
     }
 }
 
