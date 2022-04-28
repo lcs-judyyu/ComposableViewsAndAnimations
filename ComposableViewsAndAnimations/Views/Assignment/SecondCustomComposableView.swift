@@ -30,6 +30,15 @@ struct SecondCustomComposableView: View {
     //keep track of current progress
     @State var progress = 0
     
+    //controls first interval between rounded rectangles
+    let firstInterval: CGFloat = -30
+    
+    //controls spacings between rounded rectangles
+    let interval: CGFloat = -18
+    
+    //controls height of the outer rounded rectangle
+    let outerHeight: CGFloat = 35
+    
     //MARK: Computed Properties
     //controls third push
     var thirdPush: Int {
@@ -39,30 +48,76 @@ struct SecondCustomComposableView: View {
     var body: some View {
         VStack (spacing: 50) {
             
-            RoundedRectangle(cornerRadius: 50, style: .continuous)
-                .frame(width: 320, height: 35)
-            
             ZStack {
-                RoundedRectangle(cornerRadius: 50, style: .continuous)
-                    .frame(width: 70, height: 35)
+                //outer background
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .frame(width: 310, height: outerHeight)
+                
+                //from left to right
+                Group {
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color("aquamarine"))
+                        .offset(x: 120)
+                    
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color.white)
+                        .offset(x: 120 + firstInterval)
+                    
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color("aquamarine"))
+                        .offset(x: 120 + firstInterval + interval)
+                    
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color.white)
+                        .offset(x: 120 + firstInterval + 3 * interval)
+                    
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color("aquamarine"))
+                        .offset(x: 120 + firstInterval + 4 * interval)
+                }
+                
+                Group {
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color.white)
+                        .offset(x: 120 + firstInterval + 6 * interval)
+                    
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color("aquamarine"))
+                        .offset(x: 120 + firstInterval + 7 * interval)
+                    
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color.white)
+                        .offset(x: 120 + firstInterval + 9 * interval)
+                    
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color("aquamarine"))
+                        .offset(x: 120 + firstInterval + 10 * interval)
+                    
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor(Color.white)
+                        .offset(x: 120 + firstInterval + 12 * interval)
+                }
+                
+                //end
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .frame(width: 47, height: outerHeight)
                     .foregroundColor(Color("aquamarine"))
-                    .offset(x: -140)
+                    .offset(x: -133)
                 
-                RoundedRectangle(cornerRadius: 50, style: .continuous)
-                    .frame(width: 50, height: 35)
-                    .foregroundColor(Color.white)
-                    .offset(x: -110)
-                
-                RoundedRectangle(cornerRadius: 50, style: .continuous)
-                    .frame(width: 70, height: 35)
-                    .foregroundColor(Color("aquamarine"))
-                    .offset(x: -80)
-                
-                RoundedRectangle(cornerRadius: 50, style: .continuous)
-                    .frame(width: 50, height: 35)
-                    .foregroundColor(Color.white)
-                    .offset(x: -50)
             }
+            
+            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                .frame(width: 310, height: outerHeight)
             
             HStack {
                 Image(systemName: "bubble.left").scaleEffect(2.5)
