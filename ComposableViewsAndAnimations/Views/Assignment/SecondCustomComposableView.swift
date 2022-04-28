@@ -18,6 +18,21 @@ struct SecondCustomComposableView: View {
     //controls position
     @State var offset: CGFloat = 0
     
+    //controls first push
+    @State var firstPush = Int.random(in: 1...33)
+    
+    //controls second push
+    @State var secondPush = Int.random(in: 1...33)
+    
+    //controls third push
+    @State var thirdPush = Int.random(in: 1...33)
+    
+    //MARK: Computed Properties
+    //controls last push
+    var lastPush: Int {
+        100 - firstPush - secondPush - thirdPush
+    }
+    
     var body: some View {
         VStack (spacing: 50) {
             
