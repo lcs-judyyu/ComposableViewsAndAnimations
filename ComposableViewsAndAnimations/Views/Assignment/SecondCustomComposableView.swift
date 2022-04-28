@@ -65,8 +65,8 @@ struct SecondCustomComposableView: View {
             }
             
             HStack {
-                Image(systemName: "bubble.left").scaleEffect(3)
-                Image(systemName: "drop").scaleEffect(3).rotationEffect(.degrees(180))
+                Image(systemName: "bubble.left").scaleEffect(2.5)
+                Image(systemName: "drop").scaleEffect(2.5).rotationEffect(.degrees(180))
                 Text("50%")
             }
             

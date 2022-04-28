@@ -10,7 +10,10 @@ import SwiftUI
 struct SecondCustomComposableDescriptionView: View {
     
     // MARK: Stored properties
-    @State private var colorChoice: String = ""
+    @State private var colorChoice: String = "salmon"
+    
+    //possible colors
+    var colors = ["aquamarine", "cherokee", "champagne", "salmon"]
     
     // MARK: Computed properties
     var body: some View {
@@ -34,13 +37,24 @@ struct SecondCustomComposableDescriptionView: View {
                        label: Text("Color Picker"),
                        content: {
                     
-                    Text("Value 1").tag(0)
-                    Text("Value 2").tag(1)
-                    Text("Value 3").tag(2)
-                    Text("Value 4").tag(3)
+                    ForEach(colors, id: \.self, content: { color in
+                        
+                        HStack (spacing: 10) {
+                            
+                            Text(color)
+                            
+                            //square to display the color
+                            Rectangle()
+                                .frame(width: 12, height: 12, alignment: .center)
+                                .foregroundColor(Color("\(color)"))
+                            
+                        }
+  
+                                   })
                     
                 })
-                .pickerStyle(MenuPickerStyle())
+                .font(.title)
+                .pickerStyle(WheelPickerStyle())
                 
             }
             .padding(.bottom)
@@ -48,8 +62,8 @@ struct SecondCustomComposableDescriptionView: View {
             List {
                 
                 NavigationLink(destination: SecondCustomComposableView(color: colorChoice)) {
-                    SimpleListItemView(title: "My Composable View",
-                                       caption: "A brief description of my view")
+                    SimpleListItemView(title: "Progress Loading View",
+                                       caption: "The progress bar is \(colorChoice)")
                 }
                 
             }
