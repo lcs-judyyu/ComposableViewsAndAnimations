@@ -19,18 +19,21 @@ struct SecondCustomComposableView: View {
     @State var offset: CGFloat = 0
     
     //controls first push
-    @State var firstPush = Int.random(in: 1...33)
+    @State var firstPush = Int.random(in: 1...66)
     
     //controls second push
-    @State var secondPush = Int.random(in: 1...33)
+    @State var secondPush = Int.random(in: 1...32)
     
-    //controls third push
-    @State var thirdPush = Int.random(in: 1...33)
+    //controls last push
+    let lastPush: Int = 1
+    
+    //keep track of current progress
+    @State var progress = 0
     
     //MARK: Computed Properties
-    //controls last push
-    var lastPush: Int {
-        100 - firstPush - secondPush - thirdPush
+    //controls third push
+    var thirdPush: Int {
+        99 - firstPush - secondPush
     }
     
     var body: some View {
@@ -39,16 +42,43 @@ struct SecondCustomComposableView: View {
             RoundedRectangle(cornerRadius: 50, style: .continuous)
                 .frame(width: 320, height: 35)
             
+            ZStack {
+                RoundedRectangle(cornerRadius: 50, style: .continuous)
+                    .frame(width: 70, height: 35)
+                    .foregroundColor(Color("aquamarine"))
+                    .offset(x: -140)
+                
+                RoundedRectangle(cornerRadius: 50, style: .continuous)
+                    .frame(width: 50, height: 35)
+                    .foregroundColor(Color.white)
+                    .offset(x: -110)
+                
+                RoundedRectangle(cornerRadius: 50, style: .continuous)
+                    .frame(width: 70, height: 35)
+                    .foregroundColor(Color("aquamarine"))
+                    .offset(x: -80)
+                
+                RoundedRectangle(cornerRadius: 50, style: .continuous)
+                    .frame(width: 50, height: 35)
+                    .foregroundColor(Color.white)
+                    .offset(x: -50)
+            }
+            
             HStack {
-                Image(systemName: "bubble.left")
-                Image(systemName: "drop")
+                Image(systemName: "bubble.left").scaleEffect(3)
+                Image(systemName: "drop").scaleEffect(3).rotationEffect(.degrees(180))
                 Text("50%")
             }
             
-            Text("Loading...")
-            Text("Almost Ready...")
-            Text("Completed!")
-                
+            switch progress {
+            case 100:
+                Text("Completed!")
+            case 60...99:
+                Text("Almost Ready...")
+            default:
+                Text("Loading...")
+            }
+            
         }
     }
 }
