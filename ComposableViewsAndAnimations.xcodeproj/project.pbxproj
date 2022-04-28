@@ -16,6 +16,8 @@
 		0E8E8AF925E5434600012516 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8E8AF825E5434600012516 /* Preview Assets.xcassets */; };
 		0E8E8B0525E5442100012516 /* ImplicitAnimationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E8B0425E5442100012516 /* ImplicitAnimationsView.swift */; };
 		0E8E8B0A25E544D700012516 /* SimpleListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E8B0925E544D700012516 /* SimpleListItemView.swift */; };
+		5A37D4EF281AEC90003CF710 /* SecondCustomComposableDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37D4EE281AEC8F003CF710 /* SecondCustomComposableDescriptionView.swift */; };
+		5A37D4F1281AECA5003CF710 /* SecondCustomComposableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37D4F0281AECA5003CF710 /* SecondCustomComposableView.swift */; };
 		81331FA925E721C800CFDB02 /* CompletionMeterDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D2F48B25E71FA400ACF089 /* CompletionMeterDescriptionView.swift */; };
 		81331FAB25E721CB00CFDB02 /* CompletionMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D2F48A25E71FA400ACF089 /* CompletionMeterView.swift */; };
 		81331FAF25E729D600CFDB02 /* EncouragementDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81331FAE25E729D600CFDB02 /* EncouragementDescriptionView.swift */; };
@@ -45,6 +47,8 @@
 		0E8E8AFA25E5434600012516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E8E8B0425E5442100012516 /* ImplicitAnimationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplicitAnimationsView.swift; sourceTree = "<group>"; };
 		0E8E8B0925E544D700012516 /* SimpleListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListItemView.swift; sourceTree = "<group>"; };
+		5A37D4EE281AEC8F003CF710 /* SecondCustomComposableDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomComposableDescriptionView.swift; sourceTree = "<group>"; };
+		5A37D4F0281AECA5003CF710 /* SecondCustomComposableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomComposableView.swift; sourceTree = "<group>"; };
 		81331FAE25E729D600CFDB02 /* EncouragementDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementDescriptionView.swift; sourceTree = "<group>"; };
 		81331FB125E72A5A00CFDB02 /* EncouragementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementView.swift; sourceTree = "<group>"; };
 		81331FB625E736AA00CFDB02 /* CustomComposableDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComposableDescriptionView.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 			children = (
 				81331FB625E736AA00CFDB02 /* CustomComposableDescriptionView.swift */,
 				81331FBA25E736B600CFDB02 /* CustomComposableView.swift */,
+				5A37D4EE281AEC8F003CF710 /* SecondCustomComposableDescriptionView.swift */,
+				5A37D4F0281AECA5003CF710 /* SecondCustomComposableView.swift */,
 			);
 			path = Assignment;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 				81D2F46925E57FAE00ACF089 /* EAExampleOneView.swift in Sources */,
 				0E84E4F025E591F90052BC69 /* FontsView.swift in Sources */,
 				81D2F48325E7199300ACF089 /* TutorialsView.swift in Sources */,
+				5A37D4EF281AEC90003CF710 /* SecondCustomComposableDescriptionView.swift in Sources */,
 				81D2F47625E5851600ACF089 /* ExerciseOneView.swift in Sources */,
 				0E8E8AF425E5434100012516 /* ContentView.swift in Sources */,
 				81331FBB25E736B600CFDB02 /* CustomComposableView.swift in Sources */,
@@ -297,6 +304,7 @@
 				81331FB225E72A5A00CFDB02 /* EncouragementView.swift in Sources */,
 				81D2F45B25E5770300ACF089 /* IAExampleTwoView.swift in Sources */,
 				0E8E8B0A25E544D700012516 /* SimpleListItemView.swift in Sources */,
+				5A37D4F1281AECA5003CF710 /* SecondCustomComposableView.swift in Sources */,
 				81D2F47925E5855600ACF089 /* ExerciseTwoView.swift in Sources */,
 				81D2F47225E5843200ACF089 /* ExercisesView.swift in Sources */,
 				81D2F46625E57F5500ACF089 /* ExplicitAnimationsView.swift in Sources */,
