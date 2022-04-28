@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+struct Intervals: Hashable, Identifiable {
+    let id: UUID
+    let numberOfIntervals: [CGFloat] =  [0.0,1.0,3.0,4.0,6.0,7.0,9.0,10.0,12.0]
+}
 
 struct SecondCustomComposableView: View {
     
@@ -116,8 +120,17 @@ struct SecondCustomComposableView: View {
                 
             }
             
-            RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .frame(width: 310, height: outerHeight)
+            ZStack {
+                
+                ForEach([0.0,1.0,3.0,4.0,6.0,7.0,9.0,10.0,12.0], id: \.self) {
+
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .frame(width: 70, height: outerHeight)
+                        .foregroundColor($0.truncatingRemainder(dividingBy: 3) == 0 ? Color.white : Color("aquamarine"))
+                        .offset(x: 120 + firstInterval + $0 * interval)
+                }
+                
+            }
             
             HStack {
                 Image(systemName: "bubble.left").scaleEffect(2.5)
