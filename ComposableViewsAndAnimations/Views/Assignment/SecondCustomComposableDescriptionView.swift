@@ -10,7 +10,7 @@ import SwiftUI
 struct SecondCustomComposableDescriptionView: View {
     
     // MARK: Stored properties
-    @State private var phrase: String = ""
+    @State private var colorChoice: String = ""
     
     // MARK: Computed properties
     var body: some View {
@@ -30,7 +30,7 @@ struct SecondCustomComposableDescriptionView: View {
                         """)
                 
                 //let user pick a color
-                Picker(selection: .constant(""),
+                Picker(selection: $colorChoice,
                        label: Text("Color Picker"),
                        content: {
                     
@@ -47,7 +47,7 @@ struct SecondCustomComposableDescriptionView: View {
             
             List {
                 
-                NavigationLink(destination: SecondCustomComposableView()) {
+                NavigationLink(destination: SecondCustomComposableView(color: colorChoice)) {
                     SimpleListItemView(title: "My Composable View",
                                        caption: "A brief description of my view")
                 }
