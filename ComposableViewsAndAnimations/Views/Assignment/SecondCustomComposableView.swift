@@ -112,7 +112,7 @@ struct SecondCustomComposableView: View {
                     }
                     
                     withAnimation(
-                        Animation.easeInOut(duration: 1.1).delay(5.3)
+                        Animation.easeInOut(duration: 1.1).delay(5.5)
                     ) {
                         xOffset += CGFloat(lastPush) * 3.1
                         progress += lastPush
@@ -160,6 +160,6 @@ struct SecondCustomComposableView: View {
 
 struct SecondCustomComposableView_Previews: PreviewProvider {
     static var previews: some View {
-        SecondCustomComposableView(color: "aquamarine")
+        SecondCustomComposableView(color: "eggplant")
     }
 }

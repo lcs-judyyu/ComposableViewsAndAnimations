@@ -28,7 +28,8 @@ struct SecondCustomComposableDescriptionView: View {
                     .padding(.top)
                 
                 Text("""
-                        Replace this with a description of how to use this view.
+                        This view shows a progress bar sliding to 100%. The duration is always the same but the change in position is random.
+                        
                         Choose a color for the progress bar below!
                         """)
                 
@@ -63,7 +64,7 @@ struct SecondCustomComposableDescriptionView: View {
             List {
                 
                 NavigationLink(destination: SecondCustomComposableView(color: colorChoice)) {
-                    SimpleListItemView(title: "Progress Loading View",
+                    SimpleListItemView(title: "Progress Loading 100%",
                                        caption: "The progress bar is \(colorChoice)")
                 }
                 
