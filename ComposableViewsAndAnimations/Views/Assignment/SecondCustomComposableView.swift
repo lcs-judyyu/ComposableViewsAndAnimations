@@ -34,6 +34,12 @@ struct SecondCustomComposableView: View {
     //keep track of current progress
     @State var progress = 0
     
+    //controls opacity of the progress bar
+    @State var opacityAmount: CGFloat = 0
+    
+    //controls x offset of the progress bar
+    @State var xOffset: CGFloat = -310
+    
     //controls first interval between rounded rectangles
     let firstInterval: CGFloat = -30
     
@@ -50,25 +56,16 @@ struct SecondCustomComposableView: View {
     }
     
     var body: some View {
-        VStack (spacing: 50) {
+        VStack (spacing: 20) {
             
-            HStack {
-                Image(systemName: "bubble.left").scaleEffect(2.5)
-                Image(systemName: "drop").scaleEffect(2.5).rotationEffect(.degrees(180))
-                Text("50%")
+            ZStack {
+                Image(systemName: "bubble.left").scaleEffect(2.1)
+
+                Text("\(progress)%")
             }
             
             //progress bar
             ZStack {
-                
-                HStack {
-                    //hide the progress bar
-                    Rectangle()
-                        .fill(Color.white)
-                        .frame(width: 50, height: outerHeight)
-                    
-                    Spacer()
-                }
                 
                 //outer background
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
@@ -95,18 +92,62 @@ struct SecondCustomComposableView: View {
                         .foregroundColor(Color("aquamarine"))
                         .offset(x: -133)
                 }
-                .offset(x: -310)
-                .opacity(1)
+                .offset(x: xOffset)
+                .opacity(opacityAmount)
+                .onReceive(timer) { input in
+                    
+                    opacityAmount = 1
+                    
+                    withAnimation(
+                        Animation.easeInOut(duration: 1.1)
+                    ) {
+                        xOffset += CGFloat(firstPush) * 3.1
+                        progress += firstPush
+                    }
+                    
+                    withAnimation(
+                        Animation.easeInOut(duration: 1.1).delay(1.5)
+                    ) {
+                        xOffset += CGFloat(secondPush) * 3.1
+                        progress += secondPush
+                    }
+                    
+                    withAnimation(
+                        Animation.easeInOut(duration: 1.1).delay(3)
+                    ) {
+                        xOffset += CGFloat(thirdPush) * 3.1
+                        progress += thirdPush
+                    }
+                    
+                    withAnimation(
+                        Animation.easeInOut(duration: 1.1).delay(4.5)
+                    ) {
+                        xOffset += CGFloat(lastPush) * 3.1
+                        progress += lastPush
+                    }
+                    
+                    // Stop the timer
+                    timer.upstream.connect().cancel()
+                }
+                
+                HStack {
+                    //hide the progress bar
+                    Rectangle()
+                        .fill(Color.white)
+                        .frame(width: 51, height: outerHeight)
+                    
+                    Spacer()
+                }
                 
             }
             
             ZStack {
                 Text("Completed!")
                     .opacity(progress == 100 ? 1 : 0)
-          
+                
                 Text("Almost Ready...")
-                    .opacity(progress >= 60 ? 1 : 0)
-           
+                    .opacity(progress >= 60 && progress < 100 ? 1 : 0)
+                
                 Text("Loading...")
                     .opacity(progress < 60 ? 1 : 0)
             }
