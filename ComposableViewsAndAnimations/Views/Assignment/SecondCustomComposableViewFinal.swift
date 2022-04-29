@@ -14,11 +14,20 @@ struct SecondCustomComposableViewFinal: View {
     
     let timer = Timer.publish(every: 1.5, on: .main, in: .common).autoconnect()
     
+    //controls text
+    @State var textVersion: CGFloat = 1
+    
+    //controls complete text
+    @State var textOrder: CGFloat = 1
+    
     // What is the color?
     let color: String
     
-    //controls position
-    @State var offset: CGFloat = 0
+    //controls outer frame
+    @State var outerFrame: CGFloat = 310
+    
+    //controls inner frame
+    @State var innerFrame: CGFloat = 0
     
     //controls first push
     @State var firstPush = Int.random(in: 1...66)
@@ -31,18 +40,6 @@ struct SecondCustomComposableViewFinal: View {
     
     //keep track of current progress
     @State var progress = 0
-    
-    //controls opacity of the progress bar
-    @State var opacityAmount: CGFloat = 0
-    
-    //controls x offset of the progress bar
-    @State var xOffset: CGFloat = -310
-    
-    //controls first interval between rounded rectangles
-    let firstInterval: CGFloat = -30
-    
-    //controls spacings between rounded rectangles
-    let interval: CGFloat = -18
     
     //controls height of the outer rounded rectangle
     let outerHeight: CGFloat = 35
@@ -57,71 +54,136 @@ struct SecondCustomComposableViewFinal: View {
         VStack (spacing: 20) {
             
             //progress bar
-            VStack {
-                
-                //outer background
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .frame(width: 310, height: outerHeight)
-                
-                //inner fill
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(LinearGradient(
-                                        gradient: Gradient(stops: [
-                                            .init(color: Color("\(color)"), location: 0),
-                                            .init(color: Color("\(color)").opacity(0.2), location: 0.15),
-                                            .init(color: Color("\(color)"), location: 0.2),
-                                            .init(color: Color("\(color)").opacity(0.2), location: 0.35),
-                                            .init(color: Color("\(color)"), location: 0.4),
-                                            .init(color: Color("\(color)").opacity(0.2), location: 0.55),
-                                            .init(color: Color("\(color)"), location: 0.6),
-                                            .init(color: Color("\(color)").opacity(0.2), location: 0.75),
-                                            .init(color: Color("\(color)"), location: 0.8),
-                                            .init(color: Color("\(color)").opacity(0.2), location: 0.95),
-                                            .init(color: Color("\(color)"), location: 1)
-                                        ]),
-                                        startPoint: .trailing,
-                                        endPoint: .leading))
-                    .frame(width: 310, height: outerHeight)
-                
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(RadialGradient(
-                                        gradient: Gradient(colors: [
-                                            Color("\(color)"),
-                                            Color("\(color)").opacity(0.5),
-                                            Color("\(color)"),
-                                            Color("\(color)").opacity(0.5),
-                                            Color("\(color)"),
-                                            Color("\(color)").opacity(0.5),
-                                            Color("\(color)"),
-                                            Color("\(color)").opacity(0.5),
-                                            Color("\(color)")
-                                        ]),
-                                        center: .leading,
-                                        startRadius: 20,
-                                        endRadius: 300))
-                    .frame(width: 310, height: outerHeight)
-                
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color("\(color)"),Color("\(color)").opacity(0.2)]), startPoint: .trailing, endPoint: .leading))
-                    .frame(width: 310, height: outerHeight)
-                
-            }
-            
+                ZStack (alignment: .leading) {
+                    
+                    //white background
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .fill(Color.white)
+                        .frame(width: 310, height: outerHeight)
+                    
+                    ZStack (alignment: .trailing) {
+                        
+                        //white background
+                        RoundedRectangle(cornerRadius: 30, style: .continuous)
+                            .fill(Color.white)
+                            .frame(width: 310, height: outerHeight)
+                        
+                        //black background
+                        RoundedRectangle(cornerRadius: 30, style: .continuous)
+                            .frame(width: outerFrame, height: outerHeight)
+                    }
+                    
+                    
+                    //inner fill
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .fill(LinearGradient(gradient: Gradient(stops: [
+                            .init(color: Color("\(color)").opacity(2), location: 0),
+                            .init(color: Color("\(color)").opacity(0.2), location: 0.95),
+                        ]),
+                                             startPoint: .trailing,
+                                             endPoint: .leading))
+                        .frame(width: innerFrame, height: outerHeight)
+                        .onReceive(timer) { input in
+                            
+                            withAnimation(
+                                Animation.easeInOut(duration: 1.1).delay(0.5)
+                            ) {
+                                innerFrame += CGFloat(firstPush) * 3.1
+                                progress += firstPush
+                                outerFrame -= CGFloat(firstPush) * 3.1 - 20
+                            }
+                            
+                            withAnimation(
+                                Animation.easeInOut(duration: 1.1).delay(1.7)
+                            ) {
+                                innerFrame += CGFloat(secondPush) * 3.1
+                                progress += secondPush
+                                outerFrame -= CGFloat(secondPush) * 3.1 - 20
+                            }
+                            
+                            withAnimation(
+                                Animation.easeInOut(duration: 1.1).delay(3.5)
+                            ) {
+                                innerFrame += CGFloat(thirdPush) * 3.1
+                                progress += thirdPush
+                                outerFrame -= CGFloat(thirdPush) * 3.1 - 20
+                            }
+                            
+                            withAnimation(
+                                Animation.easeInOut(duration: 1.1).delay(5.5)
+                            ) {
+                                innerFrame += CGFloat(lastPush) * 3.1
+                                progress += lastPush
+                                outerFrame -= CGFloat(lastPush) * 3.1 - 20
+                            }
+                            
+                            // Stop the timer
+                            timer.upstream.connect().cancel()
+                            
+                        }
+                    
+                }
             
             //text
             ZStack {
-                Text("Completed!")
-                    .opacity(progress == 100 ? 1 : 0)
+                HStack (spacing: 4) {
+                    Text("Completed!")
+                        .opacity(textOrder == 1 ? 1 : 0.2)
+                }
+                .opacity(progress == 100 ? 1 : 0)
                 
-                Text("Almost Ready ...")
-                    .opacity(progress >= 60 && progress < 100 ? 1 : 0)
+                HStack (spacing: 4) {
+                    Text("Almost Ready")
+                    
+                    Text(" .")
+                        .opacity(textVersion == 1 ? 1 : 0.2)
+                    
+                    Text(" .")
+                        .opacity(textVersion == 2 ? 1 : 0.2)
+                    
+                    Text(" .")
+                        .opacity(textVersion == 3 ? 1 : 0.2)
+                }
+                .opacity(progress >= 60 && progress < 100 ? 1 : 0)
                 
-                Text("Loading ...")
-                    .opacity(progress < 60 ? 1 : 0)
+                HStack (spacing: 4) {
+                    Text("Loading")
+                    
+                    Text(" .")
+                        .opacity(textVersion == 1 ? 1 : 0.2)
+                    
+                    Text(" .")
+                        .opacity(textVersion == 2 ? 1 : 0.2)
+                    
+                    Text(" .")
+                        .opacity(textVersion == 3 ? 1 : 0.2)
+                }
+                .opacity(progress < 60 ? 1 : 0)
             }
             .font(Font.custom("TimesNewRomanPS-BoldItalicMT", size: 30))
             .foregroundColor(Color.gray)
-            
+            .onReceive(timer) { input in
+                
+                withAnimation(
+                    Animation.easeInOut(duration: 0.6)
+                        .repeatForever(autoreverses: false)
+                ) {
+                    
+                    if textVersion == 3 {
+                        textVersion = 1
+                    } else {
+                        textVersion += 1
+                    }
+                    
+                    if textOrder == 2 {
+                        textOrder = 1
+                    } else {
+                        textOrder += 1
+                    }
+                    
+                }
+                
+            }
         }
     }
 }
