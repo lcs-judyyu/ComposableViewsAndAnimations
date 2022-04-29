@@ -51,8 +51,8 @@ struct SecondCustomComposableDescriptionView: View {
                                 .foregroundColor(Color("\(color)"))
                             
                         }
-  
-                                   })
+                        
+                    })
                     
                 })
                 .font(.title)

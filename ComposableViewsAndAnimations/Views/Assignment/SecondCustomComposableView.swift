@@ -121,7 +121,7 @@ struct SecondCustomComposableView: View {
                     // Stop the timer
                     timer.upstream.connect().cancel()
                 }
-               
+                
                 HStack {
                     //hide the progress bar
                     Rectangle()
@@ -153,9 +153,9 @@ struct SecondCustomComposableView: View {
         .onChange(of: scenePhase) { phase in
             opacityAmount = 0
         }
-
+        
     }
-
+    
 }
 
 struct SecondCustomComposableView_Previews: PreviewProvider {
