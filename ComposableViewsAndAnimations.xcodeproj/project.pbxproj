@@ -18,6 +18,7 @@
 		0E8E8B0A25E544D700012516 /* SimpleListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E8B0925E544D700012516 /* SimpleListItemView.swift */; };
 		5A37D4EF281AEC90003CF710 /* SecondCustomComposableDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37D4EE281AEC8F003CF710 /* SecondCustomComposableDescriptionView.swift */; };
 		5A37D4F1281AECA5003CF710 /* SecondCustomComposableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37D4F0281AECA5003CF710 /* SecondCustomComposableView.swift */; };
+		5A37D4F3281C53C1003CF710 /* SecondCustomComposableViewFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A37D4F2281C53C1003CF710 /* SecondCustomComposableViewFinal.swift */; };
 		81331FA925E721C800CFDB02 /* CompletionMeterDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D2F48B25E71FA400ACF089 /* CompletionMeterDescriptionView.swift */; };
 		81331FAB25E721CB00CFDB02 /* CompletionMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D2F48A25E71FA400ACF089 /* CompletionMeterView.swift */; };
 		81331FAF25E729D600CFDB02 /* EncouragementDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81331FAE25E729D600CFDB02 /* EncouragementDescriptionView.swift */; };
@@ -49,6 +50,7 @@
 		0E8E8B0925E544D700012516 /* SimpleListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListItemView.swift; sourceTree = "<group>"; };
 		5A37D4EE281AEC8F003CF710 /* SecondCustomComposableDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomComposableDescriptionView.swift; sourceTree = "<group>"; };
 		5A37D4F0281AECA5003CF710 /* SecondCustomComposableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomComposableView.swift; sourceTree = "<group>"; };
+		5A37D4F2281C53C1003CF710 /* SecondCustomComposableViewFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomComposableViewFinal.swift; sourceTree = "<group>"; };
 		81331FAE25E729D600CFDB02 /* EncouragementDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementDescriptionView.swift; sourceTree = "<group>"; };
 		81331FB125E72A5A00CFDB02 /* EncouragementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementView.swift; sourceTree = "<group>"; };
 		81331FB625E736AA00CFDB02 /* CustomComposableDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComposableDescriptionView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				81331FBA25E736B600CFDB02 /* CustomComposableView.swift */,
 				5A37D4EE281AEC8F003CF710 /* SecondCustomComposableDescriptionView.swift */,
 				5A37D4F0281AECA5003CF710 /* SecondCustomComposableView.swift */,
+				5A37D4F2281C53C1003CF710 /* SecondCustomComposableViewFinal.swift */,
 			);
 			path = Assignment;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				81D2F45B25E5770300ACF089 /* IAExampleTwoView.swift in Sources */,
 				0E8E8B0A25E544D700012516 /* SimpleListItemView.swift in Sources */,
 				5A37D4F1281AECA5003CF710 /* SecondCustomComposableView.swift in Sources */,
+				5A37D4F3281C53C1003CF710 /* SecondCustomComposableViewFinal.swift in Sources */,
 				81D2F47925E5855600ACF089 /* ExerciseTwoView.swift in Sources */,
 				81D2F47225E5843200ACF089 /* ExercisesView.swift in Sources */,
 				81D2F46625E57F5500ACF089 /* ExplicitAnimationsView.swift in Sources */,

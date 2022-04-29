@@ -147,12 +147,12 @@ struct SecondCustomComposableView: View {
             .foregroundColor(Color.gray)
             
         }
-        .onDisappear {
-            opacityAmount = 0
-        }
-        .onChange(of: scenePhase) { phase in
-            opacityAmount = 0
-        }
+//        .onDisappear {
+//            opacityAmount = 0
+//        }
+//        .onChange(of: scenePhase) { phase in
+//            opacityAmount = 0
+//        }
         
     }
     
