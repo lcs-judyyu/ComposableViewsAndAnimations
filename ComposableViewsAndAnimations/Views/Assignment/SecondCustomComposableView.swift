@@ -58,12 +58,6 @@ struct SecondCustomComposableView: View {
     var body: some View {
         VStack (spacing: 20) {
             
-            ZStack {
-                Image(systemName: "bubble.left").scaleEffect(2.1)
-
-                Text("\(progress)%")
-            }
-            
             //progress bar
             ZStack {
                 
@@ -106,21 +100,21 @@ struct SecondCustomComposableView: View {
                     }
                     
                     withAnimation(
-                        Animation.easeInOut(duration: 1.1).delay(1.5)
+                        Animation.easeInOut(duration: 1.1).delay(1.7)
                     ) {
                         xOffset += CGFloat(secondPush) * 3.1
                         progress += secondPush
                     }
                     
                     withAnimation(
-                        Animation.easeInOut(duration: 1.1).delay(3)
+                        Animation.easeInOut(duration: 1.1).delay(3.2)
                     ) {
                         xOffset += CGFloat(thirdPush) * 3.1
                         progress += thirdPush
                     }
                     
                     withAnimation(
-                        Animation.easeInOut(duration: 1.1).delay(4.5)
+                        Animation.easeInOut(duration: 1.1).delay(4.7)
                     ) {
                         xOffset += CGFloat(lastPush) * 3.1
                         progress += lastPush
@@ -134,7 +128,7 @@ struct SecondCustomComposableView: View {
                     //hide the progress bar
                     Rectangle()
                         .fill(Color.white)
-                        .frame(width: 51, height: outerHeight)
+                        .frame(width: 50, height: outerHeight)
                     
                     Spacer()
                 }
@@ -151,6 +145,8 @@ struct SecondCustomComposableView: View {
                 Text("Loading...")
                     .opacity(progress < 60 ? 1 : 0)
             }
+            .font(Font.custom("TimesNewRomanPS-BoldItalicMT", size: 30))
+            .foregroundColor(Color.gray)
             
         }
     }
