@@ -68,6 +68,11 @@ struct SecondCustomComposableDescriptionView: View {
                                        caption: "The progress bar is \(colorChoice)")
                 }
                 
+                NavigationLink(destination: SecondCustomComposableViewFinal(color: colorChoice)) {
+                    SimpleListItemView(title: "Progress Loading 100%",
+                                       caption: "The progress bar is \(colorChoice)")
+                }
+                
             }
             
         }

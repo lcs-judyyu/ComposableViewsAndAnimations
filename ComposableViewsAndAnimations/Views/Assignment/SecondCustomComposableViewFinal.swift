@@ -57,7 +57,7 @@ struct SecondCustomComposableViewFinal: View {
         VStack (spacing: 20) {
             
             //progress bar
-            ZStack {
+            VStack {
                 
                 //outer background
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
@@ -65,6 +65,44 @@ struct SecondCustomComposableViewFinal: View {
                 
                 //inner fill
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .fill(LinearGradient(
+                                        gradient: Gradient(stops: [
+                                            .init(color: Color("\(color)"), location: 0),
+                                            .init(color: Color("\(color)").opacity(0.2), location: 0.15),
+                                            .init(color: Color("\(color)"), location: 0.2),
+                                            .init(color: Color("\(color)").opacity(0.2), location: 0.35),
+                                            .init(color: Color("\(color)"), location: 0.4),
+                                            .init(color: Color("\(color)").opacity(0.2), location: 0.55),
+                                            .init(color: Color("\(color)"), location: 0.6),
+                                            .init(color: Color("\(color)").opacity(0.2), location: 0.75),
+                                            .init(color: Color("\(color)"), location: 0.8),
+                                            .init(color: Color("\(color)").opacity(0.2), location: 0.95),
+                                            .init(color: Color("\(color)"), location: 1)
+                                        ]),
+                                        startPoint: .trailing,
+                                        endPoint: .leading))
+                    .frame(width: 310, height: outerHeight)
+                
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .fill(RadialGradient(
+                                        gradient: Gradient(colors: [
+                                            Color("\(color)"),
+                                            Color("\(color)").opacity(0.5),
+                                            Color("\(color)"),
+                                            Color("\(color)").opacity(0.5),
+                                            Color("\(color)"),
+                                            Color("\(color)").opacity(0.5),
+                                            Color("\(color)"),
+                                            Color("\(color)").opacity(0.5),
+                                            Color("\(color)")
+                                        ]),
+                                        center: .leading,
+                                        startRadius: 20,
+                                        endRadius: 300))
+                    .frame(width: 310, height: outerHeight)
+                
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color("\(color)"),Color("\(color)").opacity(0.2)]), startPoint: .trailing, endPoint: .leading))
                     .frame(width: 310, height: outerHeight)
                 
             }
