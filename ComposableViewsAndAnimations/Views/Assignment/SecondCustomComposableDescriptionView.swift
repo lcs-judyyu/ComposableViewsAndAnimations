@@ -10,10 +10,10 @@ import SwiftUI
 struct SecondCustomComposableDescriptionView: View {
     
     // MARK: Stored properties
-    @State private var colorChoice: String = "salmon"
+    @State private var colorChoice: String = "eggplant"
     
     //possible colors
-    var colors = ["aquamarine", "cherokee", "champagne", "salmon"]
+    var colors = ["amethyst", "aquamarine", "carmine", "cyan", "eggplant", "saffron", "tealish", "tulip", "watermelon"]
     
     // MARK: Computed properties
     var body: some View {
@@ -29,7 +29,7 @@ struct SecondCustomComposableDescriptionView: View {
                 
                 Text("""
                         Replace this with a description of how to use this view.
-                        If the view accepts a parameter, provide a control to enter the input below.
+                        Choose a color for the progress bar below!
                         """)
                 
                 //let user pick a color
@@ -42,6 +42,7 @@ struct SecondCustomComposableDescriptionView: View {
                         HStack (spacing: 10) {
                             
                             Text(color)
+                                .foregroundColor(Color("\(color)"))
                             
                             //square to display the color
                             Rectangle()

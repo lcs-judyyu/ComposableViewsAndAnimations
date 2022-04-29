@@ -10,6 +10,8 @@ import SwiftUI
 struct SecondCustomComposableView: View {
     
     //MARK: Stored Properties
+    @Environment(\.scenePhase) var scenePhase
+    
     let timer = Timer.publish(every: 1.5, on: .main, in: .common).autoconnect()
     
     // What is the color?
@@ -65,21 +67,21 @@ struct SecondCustomComposableView: View {
                     //from right to left
                     RoundedRectangle(cornerRadius: 30, style: .continuous)
                         .frame(width: 70, height: outerHeight)
-                        .foregroundColor(Color("aquamarine"))
+                        .foregroundColor(Color("\(color)"))
                         .offset(x: 120)
                     
                     ForEach([0.0,1.0,3.0,4.0,6.0,7.0,9.0,10.0,12.0], id: \.self) {
                         
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                             .frame(width: 70, height: outerHeight)
-                            .foregroundColor($0.truncatingRemainder(dividingBy: 3) == 0 ? Color.white : Color("aquamarine"))
+                            .foregroundColor($0.truncatingRemainder(dividingBy: 3) == 0 ? Color.white : Color("\(color)"))
                             .offset(x: 120 + firstInterval + $0 * interval)
                     }
                     
                     //end
                     RoundedRectangle(cornerRadius: 30, style: .continuous)
                         .frame(width: 47, height: outerHeight)
-                        .foregroundColor(Color("aquamarine"))
+                        .foregroundColor(Color("\(color)"))
                         .offset(x: -133)
                 }
                 .offset(x: xOffset)
@@ -148,6 +150,10 @@ struct SecondCustomComposableView: View {
         .onDisappear {
             opacityAmount = 0
         }
+        .onChange(of: scenePhase) { phase in
+            opacityAmount = 0
+        }
+
     }
 
 }
