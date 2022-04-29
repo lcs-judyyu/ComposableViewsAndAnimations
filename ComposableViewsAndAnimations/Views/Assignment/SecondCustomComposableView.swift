@@ -6,10 +6,6 @@
 //
 
 import SwiftUI
-struct Intervals: Hashable, Identifiable {
-    let id: UUID
-    let numberOfIntervals: [CGFloat] =  [0.0,1.0,3.0,4.0,6.0,7.0,9.0,10.0,12.0]
-}
 
 struct SecondCustomComposableView: View {
     
@@ -107,14 +103,14 @@ struct SecondCustomComposableView: View {
                     }
                     
                     withAnimation(
-                        Animation.easeInOut(duration: 1.1).delay(3.2)
+                        Animation.easeInOut(duration: 1.1).delay(3.5)
                     ) {
                         xOffset += CGFloat(thirdPush) * 3.1
                         progress += thirdPush
                     }
                     
                     withAnimation(
-                        Animation.easeInOut(duration: 1.1).delay(4.7)
+                        Animation.easeInOut(duration: 1.1).delay(5.3)
                     ) {
                         xOffset += CGFloat(lastPush) * 3.1
                         progress += lastPush
@@ -123,7 +119,7 @@ struct SecondCustomComposableView: View {
                     // Stop the timer
                     timer.upstream.connect().cancel()
                 }
-                
+               
                 HStack {
                     //hide the progress bar
                     Rectangle()
@@ -139,21 +135,25 @@ struct SecondCustomComposableView: View {
                 Text("Completed!")
                     .opacity(progress == 100 ? 1 : 0)
                 
-                Text("Almost Ready...")
+                Text("Almost Ready ...")
                     .opacity(progress >= 60 && progress < 100 ? 1 : 0)
                 
-                Text("Loading...")
+                Text("Loading ...")
                     .opacity(progress < 60 ? 1 : 0)
             }
             .font(Font.custom("TimesNewRomanPS-BoldItalicMT", size: 30))
             .foregroundColor(Color.gray)
             
         }
+        .onDisappear {
+            opacityAmount = 0
+        }
     }
+
 }
 
 struct SecondCustomComposableView_Previews: PreviewProvider {
     static var previews: some View {
-        SecondCustomComposableView(color: "pink")
+        SecondCustomComposableView(color: "aquamarine")
     }
 }
