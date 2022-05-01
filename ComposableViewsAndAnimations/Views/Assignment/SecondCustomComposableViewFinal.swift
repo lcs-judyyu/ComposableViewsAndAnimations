@@ -20,9 +20,6 @@ struct SecondCustomComposableViewFinal: View {
     // What is the color?
     let color: String
     
-    //controls outer frame
-    @State var outerFrame: CGFloat = 310
-    
     //controls inner frame
     @State var innerFrame: CGFloat = 0
     
@@ -80,11 +77,10 @@ struct SecondCustomComposableViewFinal: View {
                         .onReceive(timer) { input in
                             
                             withAnimation(
-                                Animation.easeInOut(duration: 1.1).delay(2)
+                                Animation.easeInOut(duration: 0.8).delay(2)
                             ) {
                                 innerFrame += CGFloat(firstPush) * 3.1
                                 progress += firstPush
-                                outerFrame -= CGFloat(firstPush) * 3.1 - 20
                             }
                             
                             withAnimation(
@@ -92,7 +88,6 @@ struct SecondCustomComposableViewFinal: View {
                             ) {
                                 innerFrame += CGFloat(secondPush) * 3.1
                                 progress += secondPush
-                                outerFrame -= CGFloat(secondPush) * 3.1 - 20
                             }
                             
                             withAnimation(
@@ -100,7 +95,6 @@ struct SecondCustomComposableViewFinal: View {
                             ) {
                                 innerFrame += CGFloat(thirdPush) * 3.1
                                 progress += thirdPush
-                                outerFrame -= CGFloat(thirdPush) * 3.1 - 20
                             }
                             
                             withAnimation(
@@ -108,7 +102,6 @@ struct SecondCustomComposableViewFinal: View {
                             ) {
                                 innerFrame += CGFloat(lastPush) * 3.1
                                 progress += lastPush
-                                outerFrame -= CGFloat(lastPush) * 3.1 - 20
                             }
                             
                             // Stop the timer
