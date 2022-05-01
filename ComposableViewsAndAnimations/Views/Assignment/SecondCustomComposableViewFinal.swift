@@ -12,7 +12,7 @@ struct SecondCustomComposableViewFinal: View {
     //MARK: Stored Properties
     @Environment(\.scenePhase) var scenePhase
     
-    let timer = Timer.publish(every: 1.5, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
     //controls text
     @State var textOrder: CGFloat = 1
@@ -80,7 +80,7 @@ struct SecondCustomComposableViewFinal: View {
                         .onReceive(timer) { input in
                             
                             withAnimation(
-                                Animation.easeInOut(duration: 1.1).delay(0.5)
+                                Animation.easeInOut(duration: 1.1).delay(2)
                             ) {
                                 innerFrame += CGFloat(firstPush) * 3.1
                                 progress += firstPush
@@ -88,7 +88,7 @@ struct SecondCustomComposableViewFinal: View {
                             }
                             
                             withAnimation(
-                                Animation.easeInOut(duration: 1.1).delay(1.7)
+                                Animation.easeInOut(duration: 1.1).delay(3.2)
                             ) {
                                 innerFrame += CGFloat(secondPush) * 3.1
                                 progress += secondPush
@@ -96,7 +96,7 @@ struct SecondCustomComposableViewFinal: View {
                             }
                             
                             withAnimation(
-                                Animation.easeInOut(duration: 1.1).delay(3.5)
+                                Animation.easeInOut(duration: 1.1).delay(5)
                             ) {
                                 innerFrame += CGFloat(thirdPush) * 3.1
                                 progress += thirdPush
@@ -104,7 +104,7 @@ struct SecondCustomComposableViewFinal: View {
                             }
                             
                             withAnimation(
-                                Animation.easeInOut(duration: 1.1).delay(5.5)
+                                Animation.easeInOut(duration: 1.1).delay(7)
                             ) {
                                 innerFrame += CGFloat(lastPush) * 3.1
                                 progress += lastPush
@@ -157,8 +157,8 @@ struct SecondCustomComposableViewFinal: View {
             .onReceive(timer) { input in
                 
                 withAnimation(
-                    Animation.easeInOut(duration: 0.6)
-                        .repeatForever(autoreverses: false)
+                    Animation.easeInOut(duration: 0.3)
+                        .repeatForever(autoreverses: true)
                 ) {
                     
                     if textOrder == 2 {
@@ -168,6 +168,9 @@ struct SecondCustomComposableViewFinal: View {
                     }
                     
                 }
+                
+                // Stop the timer
+                timer.upstream.connect().cancel()
                 
             }
         }
