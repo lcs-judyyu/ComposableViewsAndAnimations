@@ -10,8 +10,7 @@ import SwiftUI
 struct SecondCustomComposableViewFinal: View {
     
     //MARK: Stored Properties
-    @Environment(\.scenePhase) var scenePhase
-    
+    //timer
     let timer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
     
     //controls text
