@@ -15,9 +15,6 @@ struct SecondCustomComposableViewFinal: View {
     let timer = Timer.publish(every: 1.5, on: .main, in: .common).autoconnect()
     
     //controls text
-    @State var textVersion: CGFloat = 1
-    
-    //controls complete text
     @State var textOrder: CGFloat = 1
     
     // What is the color?
@@ -56,29 +53,26 @@ struct SecondCustomComposableViewFinal: View {
             //progress bar
                 ZStack (alignment: .leading) {
                     
-                    //white background
-                    RoundedRectangle(cornerRadius: 30, style: .continuous)
-                        .fill(Color.white)
-                        .frame(width: 310, height: outerHeight)
-                    
-                    ZStack (alignment: .trailing) {
+                    ZStack (alignment: .center) {
                         
                         //white background
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                             .fill(Color.white)
                             .frame(width: 310, height: outerHeight)
                         
-                        //black background
+                        //gray outline
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
-                            .frame(width: outerFrame, height: outerHeight)
+                            .stroke(Color.gray.opacity(0.7), lineWidth: 3)
+                        
                     }
+                    .frame(width: 311, height: outerHeight + 3)
                     
                     
                     //inner fill
                     RoundedRectangle(cornerRadius: 30, style: .continuous)
                         .fill(LinearGradient(gradient: Gradient(stops: [
-                            .init(color: Color("\(color)").opacity(2), location: 0),
-                            .init(color: Color("\(color)").opacity(0.2), location: 0.95),
+                            .init(color: Color("\(color)"), location: 0),
+                            .init(color: Color("\(color)").opacity(0.2), location: 0.95)
                         ]),
                                              startPoint: .trailing,
                                              endPoint: .leading))
@@ -133,30 +127,28 @@ struct SecondCustomComposableViewFinal: View {
                 .opacity(progress == 100 ? 1 : 0)
                 
                 HStack (spacing: 4) {
+                    
                     Text("Almost Ready")
                     
                     Text(" .")
-                        .opacity(textVersion == 1 ? 1 : 0.2)
+                        .opacity(textOrder == 1 ? 1 : 0.2)
                     
                     Text(" .")
-                        .opacity(textVersion == 2 ? 1 : 0.2)
-                    
-                    Text(" .")
-                        .opacity(textVersion == 3 ? 1 : 0.2)
+                        .opacity(textOrder == 2 ? 1 : 0.2)
+
                 }
                 .opacity(progress >= 60 && progress < 100 ? 1 : 0)
                 
                 HStack (spacing: 4) {
+                    
                     Text("Loading")
                     
                     Text(" .")
-                        .opacity(textVersion == 1 ? 1 : 0.2)
+                        .opacity(textOrder == 1 ? 1 : 0.2)
                     
                     Text(" .")
-                        .opacity(textVersion == 2 ? 1 : 0.2)
+                        .opacity(textOrder == 2 ? 1 : 0.2)
                     
-                    Text(" .")
-                        .opacity(textVersion == 3 ? 1 : 0.2)
                 }
                 .opacity(progress < 60 ? 1 : 0)
             }
@@ -168,12 +160,6 @@ struct SecondCustomComposableViewFinal: View {
                     Animation.easeInOut(duration: 0.6)
                         .repeatForever(autoreverses: false)
                 ) {
-                    
-                    if textVersion == 3 {
-                        textVersion = 1
-                    } else {
-                        textVersion += 1
-                    }
                     
                     if textOrder == 2 {
                         textOrder = 1
